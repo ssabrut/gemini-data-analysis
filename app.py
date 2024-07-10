@@ -9,5 +9,18 @@ def main():
     # body
     uploaded_file = st.sidebar.file_uploader("Upload a CSV file", type=["csv"])
 
+    if uploaded_file:
+        with tempfile.NamedTemporaryFile(delete=False) as f:
+            f.write(uploaded_file.getvalue())
+            tmp_file_path = f.name
+
+        csv_loader = CSVLoader(tmp_file_path, encoding="utf-8", csv_args={'delimiter': ','})
+        data = csv_loader.load()
+        user_input = st.text_input("Your Questions:")
+
+        if user_input:
+            response = "response"
+            st.write(response)
+
 if __name__ == "__main__":
     main()
