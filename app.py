@@ -1,6 +1,7 @@
 import tempfile
 import streamlit as st
 from langchain_community.document_loaders import CSVLoader
+from utils import get_model_response
 
 def main():
     st.set_page_config(page_title="Data Analyst AI", page_icon="📊")
@@ -19,8 +20,9 @@ def main():
         user_input = st.text_input("Your Questions:")
 
         if user_input:
-            response = "response"
-            st.write(response)
+            get_model_response(data, user_input)
+            # response = "response"
+            # st.write(response)
 
 if __name__ == "__main__":
     main()
