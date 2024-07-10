@@ -18,11 +18,11 @@ def main():
         csv_loader = CSVLoader(tmp_file_path, encoding="utf-8", csv_args={'delimiter': ','})
         data = csv_loader.load()
         user_input = st.text_input("Your Questions:")
+        answer_button = st.button("Get Answer")
 
-        if user_input:
-            get_model_response(data, user_input)
-            # response = "response"
-            # st.write(response)
+        if answer_button:
+            response = get_model_response(data, user_input)
+            st.write(response)
 
 if __name__ == "__main__":
     main()
